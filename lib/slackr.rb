@@ -27,6 +27,10 @@ module Slackr
     Slackr::UserData.get_user_email(connection, id)
   end
   
+  def get_user_image_url(id)
+      Slackr::UserData.get_user_image_url(connection, id)
+  end
+  
   
   
   # support for backwards compatibility
