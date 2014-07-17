@@ -26,6 +26,23 @@ module Slackr
       email
     end
     
+    def get_user_image_url(connection, id)
+      @connection = connection
+      avatar_url = ""
+      uri = URI.parse(api_url('users.list'))
+      http = Net::HTTP.new(uri.host, 443)
+      http.use_ssl = true
+      response = http.request(Net::HTTP::Get.new(uri.request_uri))
+      if response.code != "200"
+        raise Slackr::ServiceError, "Slack.com - #{response.code} - #{response.body}"
+      else
+        users = JSON.parse(response.body)["members"]
+        users.select {|user| id.to_s == user["id"]
+        avatar_url = user["profile"]["image_24"]}
+      end
+      avatar_url
+
+    end    
     private
     #To-DO: add options in url
     def api_url(service, options = {})
