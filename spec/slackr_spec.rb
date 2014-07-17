@@ -8,7 +8,16 @@ describe Slackr do
       subject.say("hello world", {})
     end
   end
-
+  
+  describe "#get_user_email" do
+    it "should delegate to the UserData" do
+      subject = Slackr.connect("foo", "bar")
+      expect(Slackr::UserData).to receive(:get_user_email)
+      subject.get_user_email("Xthaha55a")
+    end
+  end
+    
+    
   describe "Webook.new" do
     before do
       @orig_stderr = $stderr

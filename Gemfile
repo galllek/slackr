@@ -4,5 +4,5 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
-  gem 'pry'
+  gem 'pry', "0.9.10"
 end

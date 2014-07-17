@@ -2,8 +2,8 @@ require "slackr/version"
 require "slackr/errors"
 require "slackr/connection"
 require "slackr/webhooks/incoming"
-
-# slack = Slackr.connect("teamX", "token124", {"channel" => "#myroom", "username" => "systems_bot"})
+require "slackr/user_data"
+# slack = Slackr.connect(mk"teamX", "token124", {"channel" => "#myroom", "username" => "systems_bot"})
 # slack.say "hello world" => posts 'hello world' to the myroom channel as the systems_bot user
 # slack.say "hello", {"channel" => "#room2", "username" => "joke_bot"} => posts 'hello' to the room2 channel as the joke_but user
 module Slackr
@@ -18,11 +18,17 @@ module Slackr
     @connection = Slackr::Connection.new(team, token, options).init
     return self
   end
-
+  
   def say(text, options = {})
     Slackr::IncomingWebhook.say(connection, text, options)
   end
-
+  
+  def get_user_email(id)
+    Slackr::UserData.get_user_email(connection, id)
+  end
+  
+  
+  
   # support for backwards compatibility
   class Webhook
     def initialize(team, token, options = {})

@@ -22,4 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.1.1", ">= 10.1.1"
   spec.add_development_dependency "rspec", "~> 2.14.1", ">= 2.14.1"
   spec.add_development_dependency "webmock", "~> 1.17.4", ">= 1.17.4"
+  spec.add_dependency "json"
 end

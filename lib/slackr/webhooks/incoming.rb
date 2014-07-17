@@ -1,7 +1,6 @@
 require "net/http"
 require "net/https" # Obsolete as of what ruby version?
 require "uri"
-require "json"
 
 module Slackr
   module IncomingWebhook
@@ -30,7 +29,7 @@ module Slackr
     def service_url
       "#{connection.base_url}/services/hooks/incoming-webhook?token=#{connection.token}"
     end
-
+    
     def encode_message(text, options)
       #TODO: extract OptionValidator
       #TODO: add guard against invalid options
