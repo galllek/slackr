@@ -13,7 +13,8 @@ module Slackr
       @connection = connection
       email = ""
       uri = URI.parse(api_url('users.list'))
-      http = Net::HTTP.new(uri.host, uri.port)
+      http = Net::HTTP.new(uri.host, 443)
+      http.use_ssl = true
       response = http.request(Net::HTTP::Get.new(uri.request_uri))
       if response.code != "200"
         raise Slackr::ServiceError, "Slack.com - #{response.code} - #{response.body}"
