@@ -20,8 +20,8 @@ module Slackr
         raise Slackr::ServiceError, "Slack.com - #{response.code} - #{response.body}"
       else
         users = JSON.parse(response.body)["members"]
-        users.select {|user| id.to_s == user["id"]
-        email = user["profile"]["email"]}
+        user = users.select {|user| id.to_s == user["id"]}
+        email = user["profile"]["email"]
       end
       email
     end
@@ -46,7 +46,6 @@ module Slackr
             else
               avatar_url = user["profile"]["image_192"]
           end
-        }
 
       end
       avatar_url
