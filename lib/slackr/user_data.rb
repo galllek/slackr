@@ -27,7 +27,7 @@ module Slackr
             break
           end
         end
-        email = user["profile"]["email"]}
+        email = user["profile"]["email"]
       end
       email
     end
