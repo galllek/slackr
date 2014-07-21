@@ -22,9 +22,10 @@ module Slackr
         users = JSON.parse(response.body)["members"]
         user = Hash.new
         users.each |u| 
-          if u["id"] == id.to_s 
+          if u["id"] == id.to_s then
             user = u
             break
+          end
         end
         email = user["profile"]["email"]}
       end
