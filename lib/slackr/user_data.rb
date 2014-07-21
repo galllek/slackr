@@ -26,7 +26,7 @@ module Slackr
       email
     end
     
-    def get_user_image_url(connection, id)
+    def get_user_image_url(connection, id, size = 0)
       @connection = connection
       avatar_url = ""
       uri = URI.parse(api_url('users.list'))
@@ -38,7 +38,16 @@ module Slackr
       else
         users = JSON.parse(response.body)["members"]
         users.select {|user| id.to_s == user["id"]
-        avatar_url = user["profile"]["image_24"]}
+          case size
+            when 32
+              avatar_url = user["profile"]["image_32"]
+            when 48
+              avatar_url = user["profile"]["image_48"]
+            else
+              avatar_url = user["profile"]["image_192"]
+          end
+        }
+
       end
       avatar_url
 

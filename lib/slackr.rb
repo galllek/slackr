@@ -27,8 +27,8 @@ module Slackr
     Slackr::UserData.get_user_email(connection, id)
   end
   
-  def get_user_image_url(id)
-      Slackr::UserData.get_user_image_url(connection, id)
+  def get_user_image_url(id, size = 0)
+      if(size == 0)?Slackr::UserData.get_user_image_url(connection, id) : Slackr::UserData.get_user_image_url(connection, id, size)
   end
   
   
