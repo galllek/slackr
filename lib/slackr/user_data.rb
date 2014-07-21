@@ -21,7 +21,7 @@ module Slackr
       else
         users = JSON.parse(response.body)["members"]
         user = Hash.new
-        users.each |u| 
+        users.each  do |u| 
           if u["id"] == id.to_s then
             user = u
             break
