@@ -28,7 +28,11 @@ module Slackr
   end
   
   def get_user_image_url(id, size = 0)
-      if(size == 0)?Slackr::UserData.get_user_image_url(connection, id) : Slackr::UserData.get_user_image_url(connection, id, size)
+      if(size == 0)
+        Slackr::UserData.get_user_image_url(connection, id) 
+      else
+        Slackr::UserData.get_user_image_url(connection, id, size)
+      end
   end
   
   
