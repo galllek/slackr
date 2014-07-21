@@ -37,7 +37,7 @@ module Slackr
         raise Slackr::ServiceError, "Slack.com - #{response.code} - #{response.body}"
       else
         users = JSON.parse(response.body)["members"]
-        users.select {|user| id.to_s == user["id"]
+        user = users.select {|user| id.to_s == user["id"]}
           case size
             when 32
               avatar_url = user["profile"]["image_32"]
