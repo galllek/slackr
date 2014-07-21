@@ -25,12 +25,12 @@ module Slackr
           if u["id"] == id.to_s 
             user = u
             break
-          end 
         end
         email = user["profile"]["email"]}
       end
       email
     end
+      
     
     def get_user_image_url(connection, id, size = 0)
       @connection = connection
